@@ -39,13 +39,11 @@ abstract class GenericService<EntityType, DataType extends Data> {
 		List<EntityType> entityCollection;
 		List<DataType> dataCollection;
 		DataType data;
-		EntityType entity;
 
 		entityCollection = dao.retrieveAll();
 		dataCollection = new ArrayList<DataType>();
 
-        for(EntityType anEntityCollection : entityCollection) {
-            entity = anEntityCollection;
+        for(EntityType entity : entityCollection) {
             data = entityToData(entity);
             dataCollection.add(data);
         }
