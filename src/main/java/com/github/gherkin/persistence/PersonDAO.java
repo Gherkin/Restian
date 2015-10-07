@@ -27,18 +27,6 @@ public class PersonDAO extends GenericDAO<PersonEntity> implements DAO<PersonEnt
 		remove(PersonEntity.class, id);
 	}
 
-	public List<PersonEntity> find(Class<?> name) {
-		if(!name.isInstance(String.class))
-			throw new IllegalArgumentException();
-		EntityManager em = emf.createEntityManager();
-
-		String queryString = String.format("SELECT e FROM PersonEntity e WHERE e.NAME = %d", name);
-		Query query = em.createQuery(queryString, PersonEntity.class);
-
-		return query.getResultList();
-
-	}
-
     public List<PersonEntity> find(Object name) throws IllegalArgumentException {
 
         if(!(name instanceof String))
