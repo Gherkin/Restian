@@ -115,4 +115,14 @@ public class ClubResource {
         return club;
 
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("search/member")
+    public List<Club> findClubsByMember(@QueryParam("id") Long memberID) {
+
+        List<Club> clubs;
+
+        return clubs;
+    }
 }
