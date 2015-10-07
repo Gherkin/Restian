@@ -21,7 +21,13 @@ public class ClubResource {
 	
 	@Inject
 	private ClubService clubService;
-	
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Club> getAll() {
+        return clubService.retrieveAll();
+    }
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}")
