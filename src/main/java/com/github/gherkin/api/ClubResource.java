@@ -41,7 +41,7 @@ public class ClubResource {
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public void addClub(@QueryParam("name") String name, @QueryParam("id") Long id, @QueryParam("member") List<Long> memberIDs) {
+	public Club addClub(@QueryParam("name") String name, @QueryParam("id") Long id, @QueryParam("member") List<Long> memberIDs) {
 
 		Club club;
         club = new Club(id, name);
@@ -53,5 +53,6 @@ public class ClubResource {
         }
 
 		clubService.add(club);
+        return club;
 	}
 }
