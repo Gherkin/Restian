@@ -30,30 +30,26 @@ public class PersonResource {
 	
 	@POST
 	@Produces(MediaType.TEXT_PLAIN)
-	public String addPerson(@QueryParam("name") String name, @QueryParam("id") Long id) {
+	public Person addPerson(@QueryParam("name") String name, @QueryParam("id") Long id) {
 
         Person person = new Person(id, name);
 		
 		personService.add(person);
 		
-		return "successfully added person with name " + name;
+		return person;
 	}
 	
 	@DELETE
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("{id}")
-	public String deletePerson(@PathParam("id") Long id) {
+	public Person deletePerson(@PathParam("id") Long id) throws Exception {
 
         Person person;
 		person = personService.retrieve(id);
-		try {
-			personService.delete(person);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "error removing person: " + person.getName();
-		}
-		
-		return "successfully removed person: " + person.getName();
+
+		personService.delete(person);
+
+		return person;
 	}
 	
 	@GET
