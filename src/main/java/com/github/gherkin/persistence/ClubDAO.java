@@ -3,6 +3,8 @@ package com.github.gherkin.persistence;
 import java.util.List;
 
 import javax.inject.Singleton;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.github.gherkin.entity.ClubEntity;
 
@@ -25,4 +27,11 @@ public class ClubDAO extends GenericDAO<ClubEntity>implements DAO<ClubEntity> {
 		
 	}
 
+    public List<ClubEntity> find(Object name) throws IllegalArgumentException {
+
+        if(!(name instanceof String))
+            throw new IllegalArgumentException();
+
+        return find(name, "name", ClubEntity.class);
+    }
 }

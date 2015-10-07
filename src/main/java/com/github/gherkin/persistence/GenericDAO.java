@@ -11,8 +11,8 @@ import javax.persistence.Query;
 
 abstract class GenericDAO<T> {
 
-	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu1");
-	
+	protected final EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu1");
+
 	T retrieve(final Class<T> type, Long id) {
 
 		EntityManager em = emf.createEntityManager();
@@ -34,7 +34,6 @@ abstract class GenericDAO<T> {
     List<T> retrieveAll(String queryString, Class<T> type) {
 
 		EntityManager em = emf.createEntityManager();
-
 		Query query = em.createQuery(queryString, type);
 
         return query.getResultList();
@@ -84,4 +83,16 @@ abstract class GenericDAO<T> {
 			em.close();
 		}
 	}
+
+    List<T> find(Object field, String fieldName, Class<T> type) {
+
+        EntityManager em = emf.createEntityManager();
+
+        String queryString = String.format("SELECT e FROM %s e WHERE e.%s = :searchField", type.getSimpleName(), fieldName);
+        Query query = em.createQuery(queryString, type);
+        query.setParameter("searchField", field);
+
+        return query.getResultList();
+
+    }
 }

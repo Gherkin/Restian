@@ -7,6 +7,8 @@ import com.github.gherkin.api.data.Person;
 import com.github.gherkin.entity.PersonEntity;
 import com.github.gherkin.persistence.DAO;
 
+import java.util.List;
+
 @Singleton
 public class PersonServiceImpl extends GenericService<PersonEntity, Person> implements PersonService {
 
@@ -39,4 +41,9 @@ public class PersonServiceImpl extends GenericService<PersonEntity, Person> impl
 
         return person;
 	}
+
+    public List<Person> search(String name) {
+
+        return entityToData(dao.find(name));
+    }
 }

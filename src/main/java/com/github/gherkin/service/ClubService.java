@@ -12,4 +12,5 @@ public interface ClubService {
 	Person retrieveMember(Long id);
 	void add(Club club);
 	void delete(Club club) throws Exception;
+    List<Club> search(String name) throws IllegalArgumentException;
 }

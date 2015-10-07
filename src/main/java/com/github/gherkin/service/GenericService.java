@@ -36,20 +36,40 @@ abstract class GenericService<EntityType, DataType extends Data> {
 
 	public List<DataType> retrieveAll() {
 
-		List<EntityType> entityCollection;
-		List<DataType> dataCollection;
-		DataType data;
+		return entityToData(dao.retrieveAll());
+	}
 
-		entityCollection = dao.retrieveAll();
-		dataCollection = new ArrayList<DataType>();
+    @Deprecated
+    List<DataType> search(Object field) {
 
-        for(EntityType entity : entityCollection) {
+        return entityToData(dao.find(field));
+    }
+
+    protected List<DataType> entityToData(List<EntityType> entityList) {
+
+        List<DataType> dataList = new ArrayList<DataType>();
+        DataType data;
+
+        for(EntityType entity : entityList) {
             data = entityToData(entity);
-            dataCollection.add(data);
+            dataList.add(data);
         }
 
-		return dataCollection;
-	}
+        return dataList;
+    }
+
+    protected List<EntityType> dataToEntity(List<DataType> dataList) {
+
+        List<EntityType> entityList = new ArrayList<EntityType>();
+        EntityType entity;
+
+        for(DataType data : dataList) {
+            entity = dataToEntity(data);
+            entityList.add(entity);
+        }
+
+        return entityList;
+    }
 
 	protected abstract DataType entityToData(EntityType entity);
 	protected abstract EntityType dataToEntity(DataType data);

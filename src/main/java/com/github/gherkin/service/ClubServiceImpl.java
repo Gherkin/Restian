@@ -26,6 +26,11 @@ public class ClubServiceImpl extends GenericService<ClubEntity, Club> implements
 		return personService.retrieve(id);
 	}
 
+    public List<Club> search(String name) {
+
+        return entityToData(dao.find(name));
+    }
+
 	@Override
 	protected Club entityToData(ClubEntity clubEntity) {
 

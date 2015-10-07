@@ -11,4 +11,5 @@ public interface DAO<T> {
     List<T> retrieveAll();
     void remove(Long id) throws Exception;
     void add(T instance);
+    List<T> find(Object field) throws IllegalArgumentException;
 }

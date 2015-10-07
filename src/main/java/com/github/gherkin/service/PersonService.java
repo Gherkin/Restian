@@ -10,4 +10,5 @@ public interface PersonService {
     List<Person> retrieveAll();
 	void add(Person person);
 	void delete(Person person) throws Exception;
+	List<Person> search(String name);
 }

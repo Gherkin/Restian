@@ -63,6 +63,14 @@ public class ClubResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("search")
+    public List<Club> searchForClub(@QueryParam("name") String name) {
+
+        return clubService.search(name);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}/all")
     public Collection<Person> getClubsMembers(@PathParam("id") Long id) {
 

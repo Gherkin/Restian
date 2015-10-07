@@ -1,6 +1,7 @@
 package com.github.gherkin.api;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -23,7 +24,7 @@ public class PersonResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Person> getAll() {
+	public List<Person> getAll() {
 
 		return personService.retrieveAll();
 	}
@@ -59,4 +60,12 @@ public class PersonResource {
 
         return personService.retrieve(id);
 	}
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("search")
+    public List<Person> searchForPerson(@QueryParam("name") String name) {
+        System.out.println("searching for '" + name + "'");
+        return personService.search(name);
+    }
 }
