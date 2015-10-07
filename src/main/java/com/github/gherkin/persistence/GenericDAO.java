@@ -83,6 +83,7 @@ abstract class GenericDAO<T> {
 		}
 	}
 
+    @SuppressWarnings("unchecked")
     List<T> find(Object field, String fieldName, Class<T> type) {
 
         EntityManager em = emf.createEntityManager();

@@ -1,6 +1,5 @@
 package com.github.gherkin.api;
 
-import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;
