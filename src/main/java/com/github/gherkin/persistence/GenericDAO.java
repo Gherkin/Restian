@@ -25,7 +25,6 @@ abstract class GenericDAO<T> {
 			em.close();
 		}
 
-        System.out.println("returning entity");
 		return entity;
 	}
 
@@ -84,6 +83,7 @@ abstract class GenericDAO<T> {
 		}
 	}
 
+    @SuppressWarnings("unchecked")
     List<T> find(Object field, String fieldName, Class<T> type) {
 
         EntityManager em = emf.createEntityManager();

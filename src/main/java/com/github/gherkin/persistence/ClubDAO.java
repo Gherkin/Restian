@@ -3,8 +3,6 @@ package com.github.gherkin.persistence;
 import java.util.List;
 
 import javax.inject.Singleton;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import com.github.gherkin.entity.ClubEntity;
 
