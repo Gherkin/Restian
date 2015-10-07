@@ -58,12 +58,18 @@ public class ClubEntity {
 
 	public Long[] getMembers() {
 
-		String[] idString = members.split(",");
-		Long[] ids = new Long[idString.length];
-		
- 		for(int i = 0; i < idString.length; i++)
- 			ids[i] = Long.parseLong(idString[i]);
- 		
+        Long[] ids;
+
+        if(!members.equals("")) {
+            String[] idString = members.split(",");
+            ids = new Long[idString.length];
+
+            for (int i = 0; i < idString.length; i++)
+                ids[i] = Long.parseLong(idString[i]);
+        }
+        else
+            ids = new Long[0];
+
  		return ids;
 	}
 
