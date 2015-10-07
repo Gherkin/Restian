@@ -25,7 +25,6 @@ abstract class GenericDAO<T> {
 			em.close();
 		}
 
-        System.out.println("returning entity");
 		return entity;
 	}
 
