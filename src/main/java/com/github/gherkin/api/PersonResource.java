@@ -23,13 +23,13 @@ public class PersonResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Person> respond() {
+	public Collection<Person> getAll() {
 
 		return personService.retrieveAll();
 	}
 	
 	@POST
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Person addPerson(@QueryParam("name") String name, @QueryParam("id") Long id) {
 
         Person person = new Person(id, name);
@@ -40,7 +40,7 @@ public class PersonResource {
 	}
 	
 	@DELETE
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}")
 	public Person deletePerson(@PathParam("id") Long id) throws Exception {
 

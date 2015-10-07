@@ -4,12 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import com.github.gherkin.api.data.Club;
@@ -25,6 +20,7 @@ public class ClubResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Club> getAll() {
+
         return clubService.retrieveAll();
     }
 
@@ -33,32 +29,82 @@ public class ClubResource {
 	@Path("{id}")
 	public Club getClub(@PathParam("id") Long id) {
 
+		System.out.println("id = '" + id + "'");
 		return clubService.retrieve(id);
 	}
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{id}/0")
-	public Collection<Person> getClubsMember(@PathParam("id") Long id) {
 
-		Club club = clubService.retrieve(id);
-		return club.getMembers();
-	}
-	
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	public Club addClub(@QueryParam("name") String name, @QueryParam("id") Long id, @QueryParam("member") List<Long> memberIDs) {
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Club addClub(@QueryParam("name") String name, @QueryParam("id") Long id, @QueryParam("member") List<Long> memberIDs) {
 
-		Club club;
+        Club club;
         club = new Club(id, name);
 
-		Person member;
+        Person member;
         for(Long memberID : memberIDs) {
             member = clubService.retrieveMember(memberID);
             club.addMember(member);
         }
 
-		clubService.add(club);
+        clubService.add(club);
         return club;
-	}
+    }
+
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{id}")
+    public Club deleteClub(@PathParam("id") Long id) throws Exception {
+
+        Club club = clubService.retrieve(id);
+        clubService.delete(club);
+
+        return club;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{id}/all")
+    public Collection<Person> getClubsMembers(@PathParam("id") Long id) {
+
+        Club club = clubService.retrieve(id);
+        return club.getMembers();
+    }
+
+	@GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{id}/{memberID}")
+    public Person getClubsMember(@PathParam("id") Long id, @PathParam("memberID") int internalMemberID) {
+
+        Club club = clubService.retrieve(id);
+
+        return club.getMember(internalMemberID);
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{id}")
+    public Club addMember(@PathParam("id") Long id, @QueryParam("id") Long memberID) {
+
+        Club club = clubService.retrieve(id);
+        Person person = clubService.retrieveMember(memberID);
+
+        club.addMember(person);
+        clubService.add(club);
+
+        return club;
+    }
+
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{id}/{memberID}")
+    public Club deleteMember(@PathParam("id") Long id, @PathParam("memberID") int internalMemberID) {
+
+        Club club = clubService.retrieve(id);
+
+        club.removeMember(internalMemberID);
+        clubService.add(club);
+
+        return club;
+
+    }
 }

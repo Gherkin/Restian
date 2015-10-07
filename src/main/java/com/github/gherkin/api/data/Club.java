@@ -61,8 +61,18 @@ public class Club extends Data {
         this.members = members;
     }
 
-    public void addMember(Person member) {
+    public Person getMember(int id) {
 
-        members.add(member);
+        return members.get(id);
+    }
+
+    public void addMember(Person person) {
+
+        members.add(person);
+    }
+
+    public void removeMember(int id) {
+
+        members.remove(id);
     }
 }

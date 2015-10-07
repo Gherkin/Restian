@@ -11,4 +11,5 @@ public interface ClubService {
     List<Club> retrieveAll();
 	Person retrieveMember(Long id);
 	void add(Club club);
+	void delete(Club club) throws Exception;
 }
