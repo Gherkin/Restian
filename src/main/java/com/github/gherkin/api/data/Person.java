@@ -1,8 +1,5 @@
 package com.github.gherkin.api.data;
 
-/**
- * Created by niyohn on 10/6/15.
- */
 public class Person extends Data {
 
     private String name;
