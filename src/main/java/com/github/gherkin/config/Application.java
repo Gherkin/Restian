@@ -18,21 +18,21 @@ import com.github.gherkin.entity.PersonEntity;
 
 public class Application extends ResourceConfig {
 
-	public Application() {
-		
-		register(new AbstractBinder() {
-			
-			@Override
-			protected void configure() {
-				
-				bind(PersonServiceImpl.class).to(PersonService.class).in(Singleton.class);
-				bind(ClubServiceImpl.class).to(ClubService.class).in(Singleton.class);
-				bind(PersonDAO.class).to(new TypeLiteral<DAO<PersonEntity>>(){});
-				bind(ClubDAO.class).to(new TypeLiteral<DAO<ClubEntity>>(){});
-				
-			}		
-		});
+    public Application() {
 
-		packages(true, "com.github.gherkin.api");
-	}
+        register(new AbstractBinder() {
+
+            @Override
+            protected void configure() {
+
+                bind(PersonServiceImpl.class).to(PersonService.class).in(Singleton.class);
+                bind(ClubServiceImpl.class).to(ClubService.class).in(Singleton.class);
+                bind(PersonDAO.class).to(new TypeLiteral<DAO<PersonEntity>>(){});
+                bind(ClubDAO.class).to(new TypeLiteral<DAO<ClubEntity>>(){});
+
+            }
+        });
+
+        packages(true, "com.github.gherkin.api");
+    }
 }

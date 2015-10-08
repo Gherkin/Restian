@@ -8,36 +8,36 @@ import com.github.gherkin.persistence.DAO;
 
 abstract class GenericService<EntityType, DataType extends Data> {
 
-	DAO<EntityType> dao;
+    DAO<EntityType> dao;
 
-	public DataType retrieve(Long id) {
+    public DataType retrieve(Long id) {
 
-		EntityType entity;
-		DataType data;
+        EntityType entity;
+        DataType data;
 
-		entity = dao.retrieve(id);
-		data = entityToData(entity);
+        entity = dao.retrieve(id);
+        data = entityToData(entity);
 
-		return data;
-	}
+        return data;
+    }
 
-	public void add(DataType data) {
+    public void add(DataType data) {
 
-		EntityType entity;
-		entity = dataToEntity(data);
+        EntityType entity;
+        entity = dataToEntity(data);
 
-		dao.add(entity);
-	}
+        dao.add(entity);
+    }
 
-	public void delete(DataType data) throws Exception {
+    public void delete(DataType data) throws Exception {
 
-		dao.remove(data.getId());
-	}
+        dao.remove(data.getId());
+    }
 
-	public List<DataType> retrieveAll() {
+    public List<DataType> retrieveAll() {
 
-		return entityToData(dao.retrieveAll());
-	}
+        return entityToData(dao.retrieveAll());
+    }
 
     @Deprecated
     List<DataType> search(Object field) {
@@ -71,6 +71,6 @@ abstract class GenericService<EntityType, DataType extends Data> {
         return entityList;
     }
 
-	protected abstract DataType entityToData(EntityType entity);
-	protected abstract EntityType dataToEntity(DataType data);
+    protected abstract DataType entityToData(EntityType entity);
+    protected abstract EntityType dataToEntity(DataType data);
 }

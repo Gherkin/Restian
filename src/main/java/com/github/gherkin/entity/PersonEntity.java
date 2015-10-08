@@ -10,38 +10,38 @@ import javax.persistence.Table;
 @Table(name = "PERSON")
 public class PersonEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
 
-	public PersonEntity() {
+    public PersonEntity() {
 
-	}
+    }
 
-	public PersonEntity(Long id, String name) {
+    public PersonEntity(Long id, String name) {
 
-		this.id = id;
-		this.name = name;
-	}
+        this.id = id;
+        this.name = name;
+    }
 
-	public Long getId() {
+    public Long getId() {
 
-		return id;
-	}
+        return id;
+    }
 
-	public void setId(Long id) {
+    public void setId(Long id) {
 
-		this.id = id;
-	}
+        this.id = id;
+    }
 
-	public String getName() {
+    public String getName() {
 
-		return name;
-	}
+        return name;
+    }
 
-	public void setName(String name) {
+    public void setName(String name) {
 
-		this.name = name;
-	}
+        this.name = name;
+    }
 }

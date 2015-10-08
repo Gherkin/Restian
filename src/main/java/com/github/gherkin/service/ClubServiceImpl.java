@@ -14,27 +14,27 @@ import java.util.List;
 @Singleton
 public class ClubServiceImpl extends GenericService<ClubEntity, Club> implements ClubService {
 
-	@Inject
-	private void setDAO(DAO<ClubEntity> dao) {
-	this.dao = dao;
-	}
-	@Inject
-	private PersonService personService;
+    @Inject
+    private void setDAO(DAO<ClubEntity> dao) {
+    this.dao = dao;
+    }
+    @Inject
+    private PersonService personService;
 
-	public Person retrieveMember(Long id) {
+    public Person retrieveMember(Long id) {
 
-		return personService.retrieve(id);
-	}
+        return personService.retrieve(id);
+    }
 
     public List<Club> search(String name) {
 
         return entityToData(dao.find(name));
     }
 
-	@Override
-	protected Club entityToData(ClubEntity clubEntity) {
+    @Override
+    protected Club entityToData(ClubEntity clubEntity) {
 
-		Club club;
+        Club club;
         List<Person> members;
         Long[] memberIDs;
         Person member;
@@ -52,12 +52,12 @@ public class ClubServiceImpl extends GenericService<ClubEntity, Club> implements
         club.setMembers(members);
 
         return club;
-	}
+    }
 
-	@Override
-	protected ClubEntity dataToEntity(Club club) {
+    @Override
+    protected ClubEntity dataToEntity(Club club) {
 
-		ClubEntity clubEntity;
+        ClubEntity clubEntity;
         Long[] memberIDs;
         List<Person> members;
 
@@ -72,5 +72,5 @@ public class ClubServiceImpl extends GenericService<ClubEntity, Club> implements
         clubEntity.setMembers(memberIDs);
 
         return clubEntity;
-	}
+    }
 }

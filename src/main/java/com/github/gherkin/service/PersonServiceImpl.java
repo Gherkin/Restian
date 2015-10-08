@@ -12,14 +12,14 @@ import java.util.List;
 @Singleton
 public class PersonServiceImpl extends GenericService<PersonEntity, Person> implements PersonService {
 
-	@Inject
-	private void setDAO(DAO<PersonEntity> dao) {
+    @Inject
+    private void setDAO(DAO<PersonEntity> dao) {
 
-		this.dao = dao;
-	}
+        this.dao = dao;
+    }
 
-	@Override
-	protected PersonEntity dataToEntity(Person person) {
+    @Override
+    protected PersonEntity dataToEntity(Person person) {
 
         PersonEntity personEntity;
 
@@ -28,10 +28,10 @@ public class PersonServiceImpl extends GenericService<PersonEntity, Person> impl
         personEntity.setName(person.getName());
 
         return personEntity;
-	}
+    }
 
-	@Override
-	protected Person entityToData(PersonEntity personEntity) {
+    @Override
+    protected Person entityToData(PersonEntity personEntity) {
 
         Person person;
 
@@ -40,7 +40,7 @@ public class PersonServiceImpl extends GenericService<PersonEntity, Person> impl
         person.setName(personEntity.getName());
 
         return person;
-	}
+    }
 
     public List<Person> search(String name) {
 

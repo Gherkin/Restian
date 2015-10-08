@@ -3,9 +3,6 @@ package com.github.gherkin.api.data;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by niyohn on 10/6/15.
- */
 public class Club extends Data {
 
     private Long id;

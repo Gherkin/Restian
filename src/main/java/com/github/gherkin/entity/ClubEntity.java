@@ -10,11 +10,11 @@ import javax.persistence.Table;
 @Table(name = "CLUB")
 public class ClubEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String name;
-	private String members;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String members;
 
     public ClubEntity() {
 
@@ -29,7 +29,7 @@ public class ClubEntity {
     }
 
     public ClubEntity(Long id, String name, Long[] memberIDs) {
-        
+
         this.id = id;
         this.name = name;
         this.members = "";
@@ -38,25 +38,25 @@ public class ClubEntity {
 
     public Long getId() {
 
-		return id;
-	}
+        return id;
+    }
 
-	public void setId(Long id) {
+    public void setId(Long id) {
 
-		this.id = id;
-	}
+        this.id = id;
+    }
 
-	public String getName() {
+    public String getName() {
 
-		return name;
-	}
+        return name;
+    }
 
-	public void setName(String name) {
+    public void setName(String name) {
 
-		this.name = name;
-	}
+        this.name = name;
+    }
 
-	public Long[] getMembers() {
+    public Long[] getMembers() {
 
         Long[] ids;
 
@@ -70,17 +70,17 @@ public class ClubEntity {
         else
             ids = new Long[0];
 
- 		return ids;
-	}
+        return ids;
+    }
 
-	public void setMembers(Long[] membersIDs) {
+    public void setMembers(Long[] membersIDs) {
 
-		for(Long memberID : membersIDs)
+        for(Long memberID : membersIDs)
             members += memberID + ",";
-	}
-	
-	public void addMember(PersonEntity member) {
+    }
 
-		members += member.getId() + ",";
-	}
+    public void addMember(PersonEntity member) {
+
+        members += member.getId() + ",";
+    }
 }

@@ -11,21 +11,21 @@ import com.github.gherkin.entity.PersonEntity;
 
 @Singleton
 public class PersonDAO extends GenericDAO<PersonEntity> implements DAO<PersonEntity>{
-	
-	public PersonEntity retrieve(Long id) {
 
-		return retrieve(PersonEntity.class, id);
-	}
+    public PersonEntity retrieve(Long id) {
 
-	public List<PersonEntity> retrieveAll() {
+        return retrieve(PersonEntity.class, id);
+    }
 
-		return retrieveAll("SELECT e FROM PersonEntity e", PersonEntity.class);	
-	}
-	
-	public void remove(Long id) throws Exception {
+    public List<PersonEntity> retrieveAll() {
 
-		remove(PersonEntity.class, id);
-	}
+        return retrieveAll("SELECT e FROM PersonEntity e", PersonEntity.class);
+    }
+
+    public void remove(Long id) throws Exception {
+
+        remove(PersonEntity.class, id);
+    }
 
     public List<PersonEntity> find(Object name) throws IllegalArgumentException {
 

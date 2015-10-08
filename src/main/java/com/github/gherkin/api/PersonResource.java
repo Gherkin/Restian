@@ -17,48 +17,48 @@ import com.github.gherkin.service.PersonService;
 
 @Path("/Person")
 public class PersonResource {
-	
-	@Inject
-	private PersonService personService;
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Person> getAll() {
 
-		return personService.retrieveAll();
-	}
-	
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	public Person addPerson(@QueryParam("name") String name, @QueryParam("id") Long id) {
+    @Inject
+    private PersonService personService;
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Person> getAll() {
+
+        return personService.retrieveAll();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Person addPerson(@QueryParam("name") String name, @QueryParam("id") Long id) {
 
         Person person = new Person(id, name);
-		
-		personService.add(person);
-		
-		return person;
-	}
-	
-	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{id}")
-	public Person deletePerson(@PathParam("id") Long id) throws Exception {
+
+        personService.add(person);
+
+        return person;
+    }
+
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{id}")
+    public Person deletePerson(@PathParam("id") Long id) throws Exception {
 
         Person person;
-		person = personService.retrieve(id);
+        person = personService.retrieve(id);
 
-		personService.delete(person);
+        personService.delete(person);
 
-		return person;
-	}
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{id}")
-	public Person getPersonByID(@PathParam("id") Long id) {
+        return person;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{id}")
+    public Person getPersonByID(@PathParam("id") Long id) {
 
         return personService.retrieve(id);
-	}
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

@@ -13,9 +13,9 @@ import com.github.gherkin.service.ClubService;
 
 @Path("/Clubs")
 public class ClubResource {
-	
-	@Inject
-	private ClubService clubService;
+
+    @Inject
+    private ClubService clubService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -24,14 +24,14 @@ public class ClubResource {
         return clubService.retrieveAll();
     }
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{id}")
-	public Club getClub(@PathParam("id") Long id) {
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{id}")
+    public Club getClub(@PathParam("id") Long id) {
 
-		System.out.println("id = '" + id + "'");
-		return clubService.retrieve(id);
-	}
+        System.out.println("id = '" + id + "'");
+        return clubService.retrieve(id);
+    }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -78,7 +78,7 @@ public class ClubResource {
         return club.getMembers();
     }
 
-	@GET
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}/{memberID}")
     public Person getClubsMember(@PathParam("id") Long id, @PathParam("memberID") int internalMemberID) {

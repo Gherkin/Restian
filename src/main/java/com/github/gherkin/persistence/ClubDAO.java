@@ -9,21 +9,21 @@ import com.github.gherkin.entity.ClubEntity;
 @Singleton
 public class ClubDAO extends GenericDAO<ClubEntity>implements DAO<ClubEntity> {
 
-	public ClubEntity retrieve(Long id) {
+    public ClubEntity retrieve(Long id) {
 
-		return retrieve(ClubEntity.class, id);
-	}
+        return retrieve(ClubEntity.class, id);
+    }
 
-	public List<ClubEntity> retrieveAll() {
+    public List<ClubEntity> retrieveAll() {
 
-		return retrieveAll("SELECT e FROM ClubEntity e", ClubEntity.class);
-	}
-	
-	public void remove(Long id) throws Exception {
+        return retrieveAll("SELECT e FROM ClubEntity e", ClubEntity.class);
+    }
 
-		remove(ClubEntity.class, id);
-		
-	}
+    public void remove(Long id) throws Exception {
+
+        remove(ClubEntity.class, id);
+
+    }
 
     public List<ClubEntity> find(Object name) throws IllegalArgumentException {
 

@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface ClubService {
 
-	Club retrieve(Long id);
+    Club retrieve(Long id);
     List<Club> retrieveAll();
-	Person retrieveMember(Long id);
-	void add(Club club);
-	void delete(Club club) throws Exception;
+    Person retrieveMember(Long id);
+    void add(Club club);
+    void delete(Club club) throws Exception;
     List<Club> search(String name) throws IllegalArgumentException;
 }
