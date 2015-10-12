@@ -79,8 +79,4 @@ public class ClubEntity {
             members += memberID + ",";
     }
 
-    public void addMember(PersonEntity member) {
-
-        members += member.getId() + ",";
-    }
 }

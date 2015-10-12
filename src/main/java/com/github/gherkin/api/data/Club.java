@@ -21,13 +21,6 @@ public class Club extends Data {
         this.members = new ArrayList<Person>();
     }
 
-    public Club(Long id, String name, List<Person> members) {
-
-        this.id = id;
-        this.name = name;
-        this.members = members;
-    }
-
     public Long getId() {
 
         return id;
