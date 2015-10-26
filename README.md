@@ -25,7 +25,7 @@ A simple REST Lab
   - *ClubServiceImpl*
  
 ####Packages
-- **api** - contains servlets
+- **api** - contains resources
 - **data** - contains the resources handled by said servlets
 - **config** - contains the Jersey Configuration i.e injection binds
 - **persistence** - contains the Data Access Objects that work with the JPA
